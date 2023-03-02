@@ -1,10 +1,10 @@
 import * as model from './model.js';
 import { MODAL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
-import SearchView from './views/searchView.js';
+import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
-import bookmarksView from './views/BookmarksView.js';
+import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 
 import 'core-js/stable';
@@ -46,7 +46,7 @@ const controlSearchResults = async function () {
     resultsView.renderSpinner();
 
     // 1. Get search query
-    const query = SearchView.getQuery();
+    const query = searchView.getQuery();
     if (!query) return;
 
     // 2. Load search results
@@ -134,7 +134,7 @@ const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
-  SearchView.addHandlerSearch(controlSearchResults);
+  searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
 };
